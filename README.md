@@ -3,6 +3,9 @@ playing around
 
 
 ```
+Install 
+$npm i
+
 Run 
 $node cache.js
 

@@ -51,11 +51,5 @@ module.exports = Cache = class Cache {
         this.storage.add(key);
         this.indices.set(key, value);
     }
-
-    print() {
-        for (const [key, value] of this.indices) {
-            console.log(key + ' = ' + value)
-        }
-    }
 }
 
