@@ -53,26 +53,10 @@ module.exports = Cache = class Cache {
     }
 
     print(){
+        console.log('size**', this.indices.size);
         for (const [key, value] of this.indices) {
             console.log(key + ' = ' + value)
         }
     }
 }
 
-const cache = new Cache(2);
-cache.put('nir', 'bla');
-cache.put('nadav', 'bla');
-cache.put('yaron', 'bla');
-// expected: nadav, yaron
-//
-cache.print();
-// console.log('cache**', JSON.stringify(cache, null, 2));
-
-//
-// cache.put('nir', 'bla');
-// cache.put('nadav', 'bla');
-// cache.get('nir', 'bla');
-// cache.put('yaron', 'bla');
-// // expected: nir, yaron
-//
-// cache.print();

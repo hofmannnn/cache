@@ -1,32 +1,46 @@
 const Cache = require('./cache');
-describe('cache insert and get', () => {
+
+describe('cache insert 2 elements when size is 2', () => {
     const cache = new Cache(2);
-    test('insert items', () => {
-        cache.put('1', 1);
-        cache.put('2', 2);
-        expect(cache.storage).toMatchObject({ '1': { '1': 1 }, '2': { '2': 2 } });
+    cache.put('nir', 'bla');
+    cache.put('nadav', 'bla');
+    cache.put('yaron', 'bla-bla-bla');
+
+    test('size of stored elements should be 2', () => {
+        expect(cache.indices.size).toBe(2);
     });
 
-    test('insert items when cache is full', () => {
-        cache.get('1', 1);
-        cache.put('3', 3);
-        expect(cache.storage).toMatchObject({ '1': { '1': 1 }, '2': { '3': 3 } });
+    test('nadav should exists in storage', () => {
+        expect(cache.indices.get('nadav')).toBe('bla');
+    });
+
+    test('yaron should exists in storage', () => {
+        expect(cache.indices.get('yaron')).toBe('bla-bla-bla');
+    });
+
+    test('nir should exists in storage', () => {
+        expect(cache.indices.get('nir')).toBe(undefined);
     });
 })
 
-describe('cache insert items', () => {
+describe('getting an item that was first inserted should bump it', () => {
     const cache = new Cache(2);
-    test('insert items', () => {
-        cache.put('1', 1);
-        cache.put('2', 2);
-        console.log('cache.storage**', cache.storage);
-        expect(cache.storage).toMatchObject({ '1': { '1': 1 }, '2': { '2': 2 } });
+    cache.put('nir', 'bla');
+    cache.put('nadav', 'bla');
+    cache.get('nir', 'bla');
+    cache.put('yaron', 'bla');
+
+    test('nadav should NOT exists in storage', () => {
+        expect(cache.indices.get('nadav')).toBe(undefined);
     });
 
-    test('insert items when cache is full', () => {
-        cache.put('3', 3);
-        console.log('cache.storage**', cache.storage);
-        expect(cache.storage).toMatchObject({ '1': { '2':2 }, '3': { '3': 3 } });
+    test('nir should exists in storage', () => {
+        expect(cache.indices.get('nir')).toBe('bla');
     });
+
+    test('yaron should exists in storage', () => {
+        expect(cache.indices.get('yaron')).toBe('bla');
+    });
+
 })
 
