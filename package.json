@@ -1,0 +1,23 @@
+{
+  "name": "cache",
+  "version": "1.0.0",
+  "description": "playing around",
+  "main": "cache.js",
+  "dependencies": {
+    "jest": "^27.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hofmannnn/cache.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hofmannnn/cache/issues"
+  },
+  "homepage": "https://github.com/hofmannnn/cache#readme"
+}
